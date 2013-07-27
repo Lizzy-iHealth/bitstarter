@@ -1,4 +1,5 @@
-var content = fs.readFileSync("index.html").toString;
+var fs = require('fs');
+var content = fs.readFileSync("index.html").toString();
 var express = require('express');
 var app = express();
 app.use(express.logger());
