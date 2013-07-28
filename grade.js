@@ -64,6 +64,27 @@ var clone = function(fn) {
     return fn.bind({});
 };
 
+var buildfn = function(checksfile){
+    var checkResult = function(result,response){
+	if(result instanceof Error){
+	    console.error('Error:' + util.format(response.message));
+	    }else{
+		$ = cheerio.load(result.toString());
+		var checks = loadChecks(checksfile).sort();
+		var out = {};
+		for(var ii in checks) {
+		    var present = $(checks[ii]).length > 0;
+		    out[checks[ii]] = present;
+		}
+		var outJson = JSON.stringify(out, null, 4);
+		console.log(outJson);
+		}
+	}
+    return checkResult;
+		
+		
+};
+
 if(require.main == module) {
     program
 	.option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
@@ -71,7 +92,9 @@ if(require.main == module) {
     .option('-u, --url <url>','url to check')
 	.parse(process.argv);
     if(program.url){
-	console.log(program.url);
+//	console.log(program.url);
+	var checkResult = buildfn(program.checks);
+	rest.get(program.url).on('complete',checkResult);
 	} else {
 
 	    var checkJson = checkHtmlFile(program.file, program.checks);
