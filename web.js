@@ -21,8 +21,9 @@ app.get('/subscribe',function(request,response){
     addEmail(user_email,function(err){
 	if(err){console.log(err);
 		response.send("error subscribing");}
-	else{response.redirect("/");
-	     }
+	else{//response.redirect("/thankyou");
+	    response.send("Thank you for subscribing!");
+	}
 	});
 });
 app.get('/*.png',function(request,response){
