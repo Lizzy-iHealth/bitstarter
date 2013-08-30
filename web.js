@@ -12,6 +12,10 @@ app.get('/', function(request, response) {
   response.send(content);
 });
 
+app.get('/subscribe',function(request,response){
+    var user_email=request.query.user_email;
+    console.log(user_email);
+});
 app.get('/*.png',function(request,response){
     var f=getFileName(request);
     response.sendfile(f);
