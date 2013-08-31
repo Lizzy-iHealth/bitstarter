@@ -1,13 +1,18 @@
 {
-  "name": "node-js-sample",
+  "name": "lisnju-bitstarter",
   "version": "0.0.2",
-  "description": "a sample node.js app for heroku",
+  "description": "Virtual Guqin Promotion Page",
   "main": "web.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "~3.3.4"
+       "sequelize": "~2.0.0-alpha2",
+    "pg": "~2.3.1",
+    "ejs": "~0.8.4",
+    "express": "~3.3.4",
+    "async": "~0.2.9"
+
   },
   "engines": {
     "node": "0.10.13",
@@ -15,13 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-sample"
+    "url": "https://github.com/lisnju/bitstarter.git"
   },
   "keywords": [
-    "node",
-    "heroku"
+    "Virtual Guqin"
   ],
-  "author": "Mark Pundsack",
+  "author": "Lis Liu",
   "license": "BSD",
   "gitHead": "90fd58e343c29e54fc1d4e19036595500b2bdc21"
 }
