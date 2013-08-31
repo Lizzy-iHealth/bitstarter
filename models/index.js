@@ -2,7 +2,7 @@ if (!global.hasOwnProperty('db')) {
     var Sequelize = require('sequelize');
     var sq = null;
     var fs = require('fs');
-//    var PGPASS_FILE = '../.pgpass';
+    var PGPASS_FILE = '../.pgpass';
     if (process.env.DATABASE_URL) {
         /* Remote database
            Do `heroku config` for details. We will be parsing a connection
@@ -26,11 +26,11 @@ if (!global.hasOwnProperty('db')) {
         };
         sq = new Sequelize(dbname, user, password, config);
     } else {
-	console.log("DATABASE_URL not defined.");
+//	console.log("DATABASE_URL not defined.");
 	/* Local database
            We parse the .pgpass file for the connection string parameters.
         */
-/*
+
         var pgtokens = fs.readFileSync(PGPASS_FILE).toString().split(':');
         var host = pgtokens[0];
         var port = pgtokens[1];
@@ -44,7 +44,7 @@ if (!global.hasOwnProperty('db')) {
             host:     host,
         };
         var sq = new Sequelize(dbname, user, password, config);
-*/    }
+    }
     global.db = {
         Sequelize: Sequelize,
         sequelize: sq,
