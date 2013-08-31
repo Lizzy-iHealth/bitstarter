@@ -4,7 +4,7 @@ var express = require('express');
 var http = require('http');
 var db = require('./models');
 var app = express();
-app.use(express.logger());
+//app.use(express.logger());
 app.set('port', process.env.PORT || 8080);
 
 var getFileName=function(request){
