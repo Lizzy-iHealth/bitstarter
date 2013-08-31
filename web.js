@@ -85,7 +85,7 @@ var sendEmail=function(transport,userEmail){
 	to:userEmail,
 	subject:"Thank you for subcribe to Virtual Guqin",
 	generateTextFromHTML:true
-	,html:"Dear Virtual Guqin subscriber:<br><br>  Thank you for your interests in Virtual Guqin.<br>  The Virtual Guqin web app will coming out soon. The link for preview will be sent to you then.<br><br>Best Wishes!<br>Virtual Guqin team.<br> <a href=\"http://lisnju-bitstarter-mooc.herokuapp.com/\"> Virtual Guqin Promotion Page</a><br>"
+	,html:"Dear Virtual Guqin subscriber:<br><br>  Thank you for your interests in Virtual Guqin.<br>  The Virtual Guqin web app is on: <a href=\"http://vguqin.herokuapp.com\">http://vguqin.herokuapp.com/</a> <br>Please reply the letter to send your precious comments.<br><br><br>Enjoy!<br>Virtual Guqin team.<br> <a href=\"http://lisnju-bitstarter-mooc.herokuapp.com/\"> Virtual Guqin Promotion Page</a><br><a href=\"http://vguqin.herokuapp.com/\">Virtual Guqin Website</a><br>"
 //<a href=\"google.com\">Click here to unsubscribe</a><br>"
 
 	};
