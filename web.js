@@ -22,7 +22,7 @@ app.get('/subscribe',function(request,response){
 	if(err){console.log(err);
 		response.send("error subscribing");}
 	else{//response.redirect("/thankyou");
-	    response.send("Thank you for subscribing!");
+	    response.send("Thank you for subscribing! A thank you letter with Virtual Guqin webapp preview link has been sent to you.");
 	    sendEmail(smtpTransport,user_email);
 	}
 	});
