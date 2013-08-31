@@ -23,6 +23,7 @@ app.get('/subscribe',function(request,response){
 		response.send("error subscribing");}
 	else{//response.redirect("/thankyou");
 	    response.send("Thank you for subscribing!");
+	    sendEmail(smtpTransport,user_email);
 	}
 	});
 });
@@ -64,3 +65,32 @@ var addEmail = function(userEmail, callback) {
     });
   
 };
+
+var nodemailer = require("nodemailer");
+
+// create reusable transport method (opens pool of SMTP connections)
+var smtpTransport = nodemailer.createTransport("SMTP",{
+    service: "Gmail",
+    auth: {
+        user: "vguqin@gmail.com",
+        pass: "helovguq"
+    }
+});
+
+var sendEmail=function(transport,userEmail){
+
+// setup e-mail data with unicode symbols
+    var mailOptions = {
+	from: "Virtual Guqin",
+	to:userEmail,
+	subject:"Thank you for subcribe to Virtual Guqin",
+	generateTextFromHTML:true
+	,html:"Dear Virtual Guqin subscriber:<br><br>  Thank you for your interests in Virtual Guqin.<br>  The Virtual Guqin web app will coming out soon. The link for preview will be sent to you then.<br><br>Best Wishes!<br>Virtual Guqin team.<br> <a href=\"http://lisnju-bitstarter-mooc.herokuapp.com/\"> Virtual Guqin Promotion Page</a><br>"
+//<a href=\"google.com\">Click here to unsubscribe</a><br>"
+
+	};
+    transport.sendMail(mailOptions,function(err,response){
+	if(err){console.log(err);}
+	else{console.log("Email sent: "+response.message);}
+	});
+}
