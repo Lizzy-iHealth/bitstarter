@@ -27,7 +27,7 @@ app.get('/subscribe',function(request,response){
 	}
 	});
 });
-app.get('/*.png',function(request,response){
+app.get('/*.*',function(request,response){
     var f=getFileName(request);
     response.sendfile(f);
 });
