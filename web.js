@@ -3,16 +3,36 @@ var content = fs.readFileSync("index.html").toString();
 var express = require('express');
 var http = require('http');
 var db = require('./models');
+var ejs = require('ejs');
 var app = express();
+var i18n = require('i18n');
+
+
 //app.use(express.logger());
+app.use(i18n.init);
 app.set('port', process.env.PORT || 8080);
+
+app.set('views',__dirname+'/views');
+app.set('view engine','ejs');
+
+i18n.configure({
+    locales:['en','zh-cn','zh-tw','fr','cs','el','gl','ru','de'],
+    directory:__dirname+'/locales'
+});
+
 
 var getFileName=function(request){
     var path=__dirname+request.path;
     return path;
 };
 app.get('/', function(request, response) {
-  response.send(content);
+    response.setLocale('en');
+    response.render("index");
+});
+
+app.get('/cn', function(request,response){
+    response.setLocale("zh-cn");
+    response.render("index");
 });
 
 app.get('/subscribe',function(request,response){
